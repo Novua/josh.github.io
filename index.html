@@ -100,6 +100,50 @@
         <a href="Contact.html" class="u-border-2 u-border-custom-color-2 u-btn u-button-style u-custom-color-6 u-custom-font u-font-courier-new u-hover-custom-color-2 u-btn-1"> CONTACT</a>
       </div>
     </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create a full-screen black overlay
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = 'black';
+      overlay.style.color = 'white';
+      overlay.style.display = 'flex';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.fontSize = '24px';
+      overlay.style.zIndex = '9999';
+      overlay.style.transition = 'opacity 1s ease'; // Fade-out transition
+      overlay.innerHTML = 'Click to Enter';
+      document.body.appendChild(overlay);
+
+      const audio = new Audio('files/lofi.mp3');
+      audio.loop = true;
+      audio.volume = 0.5; // Set volume to 50% (adjust as needed)
+
+      // Play audio and fade out overlay on click
+      overlay.addEventListener('click', () => {
+        audio.play().then(() => {
+          console.log('Audio playing');
+        }).catch(err => {
+          console.error('Autoplay blocked:', err);
+        });
+
+        // Fade out and remove overlay
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          document.body.removeChild(overlay);
+        }, 1000); // Matches the transition duration
+      });
+    });
+  </script>
+
+
+
     
     
   
